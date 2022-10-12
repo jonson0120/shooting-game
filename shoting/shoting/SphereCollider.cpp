@@ -1,6 +1,14 @@
 #include "SphereCollider.h"
 #include<math.h>
 
+SphereCollider::SphereCollider(T_Location location, float radius) {
+
+	this->location.x = location.x;
+	this->location.y = location.y;
+
+	this->radius = radius;
+}
+
 bool  SphereCollider::HitSphere(SphereCollider s)  //ヒット判定
 {
 	//円と円の当たり判定
@@ -12,14 +20,12 @@ bool  SphereCollider::HitSphere(SphereCollider s)  //ヒット判定
 	float y = this->location.y - location.y;
 
 	//絶対値に変換
-	x = x < 0 ? -x : x;
-	y = y < 0 ? -y : y;
+	x = fabsf(x);
+	y = fabsf(y);
 
 
 	//ベクトルの大きさ
-	float x2 = x * x;
-	float y2 = y * y;
-	float xy = x2 + y2;
+	float xy = (x * x) + (y * y);
 	double vectorSize = sqrt(xy);
 
 	//自分の半径＋相手の半径　より小さい時当たっている

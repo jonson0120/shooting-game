@@ -14,6 +14,8 @@ private:
 	float radius;
 
 public:
+	SphereCollider(T_Location location, float radius);
+public:
 
 	bool HitSphere(SphereCollider s);  //ƒqƒbƒg”»’è
 	float GetRadius();
