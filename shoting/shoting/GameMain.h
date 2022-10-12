@@ -1,7 +1,6 @@
 #pragma once
-
 #include"AbstractScene.h"
-
+#include"Player.h"
 class GameMain :public AbstractScene {
 
 public:
