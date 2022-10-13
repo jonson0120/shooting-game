@@ -9,6 +9,7 @@ private:
 
 public:
 	Player(T_Location location, float radius);
+
 public:
 	void Update() override;
 	void Draw() override;
