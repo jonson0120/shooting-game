@@ -110,6 +110,7 @@ void Player::addScore(int point)
     if (point > 0) 
     {
         score += point;
+
     }
 }
 

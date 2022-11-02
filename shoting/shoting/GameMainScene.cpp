@@ -28,7 +28,9 @@ AbstractScene* GameMainScene::Update()
             }
             if (bullets[bulletsCount]->HitSphere(enemy[EnemyCount]))
             {
+                // 弾のダメージをエネミーに与える
                 enemy[EnemyCount]->Hit(bullets[bulletsCount]->GetDamage());
+
 
                 // プレイヤーの弾とエネミーが当たった
                 player->Hit(bulletsCount);// 弾を消す
@@ -36,7 +38,6 @@ AbstractScene* GameMainScene::Update()
                 bulletsCount--;
 
 
-                // 弾のダメージをエネミーに与える
                 
                 // エネミーのHPがゼロ以下であれば、エネミーを消す
                 if (enemy[EnemyCount]->HpCheck());
@@ -44,6 +45,7 @@ AbstractScene* GameMainScene::Update()
                 // エネミーを消したとき、プレイヤーのスコアに、
                 // エネミーのポイントを加算する
                 player->addScore(enemy[EnemyCount]->GetPoint());
+
 
                 delete enemy[EnemyCount];
                 enemy[EnemyCount] = nullptr;
