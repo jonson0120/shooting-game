@@ -3,7 +3,7 @@
 
 enum class E_ITEM_TYPE
 {
-    NOMAL = 0
+    HP_POTION = 0
 };
 
 
@@ -25,13 +25,5 @@ public:
      virtual void Draw() = 0;
      E_ITEM_TYPE GetType();
 };
-
-//変数：
-//・speed
-//・type
-//関数：
-//・Update() = 0
-//・Draw() = 0
-//・GetType()
 
 

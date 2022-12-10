@@ -14,7 +14,11 @@ public:
     void Update() override;
     void Draw() override;
     void Hit()override;
-    void Hit(int bulletsCount) ;
+    void Hit(int bulletsCount);
+
+    void Hit(class BulletsBase* bullets);
+    void Hit(class ItemBase* item);
+
     bool LifeCheck();
     int GetScore();
     void addScore(int point);

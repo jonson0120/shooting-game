@@ -1,13 +1,13 @@
 #pragma once
-#include "BulletsBase.h"
-class StraightBullets : public BulletsBase
+#include"BulletsBase.h"
+class StraightBullets1 :public BulletsBase
 {
 private:
     int image;  // 一旦放置
 
 public:
 
-    StraightBullets(T_Location location, T_Location speed);  // コンストラクタ
+    StraightBullets1(T_Location location1, T_Location speed);  // コンストラクタ
 
 public:
     virtual void Update() override;

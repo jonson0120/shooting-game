@@ -5,6 +5,7 @@
 #include "DxLib.h"
 #include "SceneManager.h"
 #include "GameMainScene.h"
+#include"common.h"
 
 /***********************************************
  * プログラムの開始
@@ -14,6 +15,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     SetMainWindowText("シューティングゲーム");    // タイトルを設定
 
     ChangeWindowMode(TRUE);		// ウィンドウモードで起動
+
+    SetWindowSize(SCREEN_WINDTH, SCREEN_HEIGHT);
+    SetGraphMode(SCREEN_WINDTH, SCREEN_HEIGHT, SCREEN_COLOR_BIT_16);
 
     if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 

@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "KeyManager.h"
 #include "StraightBullets.h"
+#include"HpPotion.h"
 
 T_Location getNewLocation(T_Location newLocation);
 
@@ -56,13 +57,21 @@ void Player::Update()
     {
         if (bulletCount < 30 && bullets[bulletCount] == nullptr)
         {
-            bullets[bulletCount] = new StraightBullets(GetLocation());
+            bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{0,-2});
         }
     }
 }
 
 void Player::Draw()
 {
+
+#define _DEBUG_MODE_
+
+#ifdef _DEBUG_MODE_
+    DrawFormatString(10, 10, GetColor(255, 255, 255), "Life=%d", this->life);
+#endif 
+
+
     DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 0));
 
     int bulletCount;
@@ -80,6 +89,7 @@ void Player::Hit() {
 }
 void Player::Hit(int bulletsCount)
 {
+
     delete bullets[bulletsCount];
     bullets[bulletsCount] = nullptr;
 
@@ -92,7 +102,39 @@ void Player::Hit(int bulletsCount)
         bullets[i - 1] = bullets[i];
         bullets[i] = nullptr;
     }
+
 }
+
+void Player::Hit(BulletsBase* bullets)
+{
+    int damage = bullets->GetDamage();
+    life -= damage;
+}
+
+void Player::Hit(class ItemBase* item) 
+{
+
+    E_ITEM_TYPE type = item->GetType();
+    switch (type)
+    {
+        case E_ITEM_TYPE::HP_POTION:
+        {
+            HpPotion* potion = dynamic_cast<HpPotion*>(item);
+            if (potion == nullptr)
+            {
+                throw - 1;
+            }
+            this->life += potion->GetHealPower();
+            break;
+
+        }
+            
+    default:
+        break;
+    }
+
+}
+
 
 bool Player::LifeCheck()
 {
@@ -153,26 +195,3 @@ void bubbleSort(int array[], int array_size)
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-//
-//bullets[bulletCount] = nullptr;
-//
-//for(int i = bulletCount; i < 29; i++)
-//{
-//    if(bullets[i + 1] == nullptr)
-//    {
-//        break;
-//    }
-//    bullets[i] = bullets[i + 1];
-//    bullets[i + 1] = nullptr;
-//}
-//bulletCount--;

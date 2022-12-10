@@ -6,6 +6,7 @@ class Enemy : public CharaBase, public SphereCollider
 private:
     int hp;
     int point;
+    int WaitCount;
 
 public:
     Enemy(T_Location location, float radius);
@@ -17,5 +18,6 @@ public:
     virtual void Hit(int damage);
     bool HpCheck();
     int GetPoint();
+    void DeletaBullet(int bulletCount);
 };
 

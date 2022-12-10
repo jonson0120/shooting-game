@@ -8,11 +8,13 @@ private:
 
 
 public:
-    HpPotion(T_Location);
+    HpPotion(T_Location location);
 
 
 public:
     virtual void Update() ;
     virtual void Draw() ;
+    int GetHealPower();
+
 };
 

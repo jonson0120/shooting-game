@@ -6,7 +6,7 @@ class KeyManager
 private:
     static char oldKey[256];     // 前回の入力キー
     static char nowKey[256];     // 今回の入力キー
-
+   
 private:
     KeyManager() = default;
 
