@@ -60,6 +60,8 @@ void Player::Update()
             bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{0,-2});
         }
     }
+    
+    
 }
 
 void Player::Draw()

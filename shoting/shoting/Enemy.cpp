@@ -2,7 +2,6 @@
 #include "Enemy.h"
 #include "KeyManager.h"
 #include "StraightBullets.h"
-#include"StraightBullets1.h"
 
 #define ATTACK_INTERVAL 30
 
@@ -46,19 +45,31 @@ void Enemy::Update()
     }
 
     WaitCount++;
+    //ATTACK_INTERVALの値を変えることで弾を出すスピードを変える
     if (ATTACK_INTERVAL <= WaitCount)
     {
         if (bulletCount < 30 && bullets[bulletCount] == nullptr)
         {
             WaitCount = 0;
-            //bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0.2,2 });
+
+            //一個目と二個目は同じGetLocationを使ってるので一個目の文が使えない(?)
+            //だからただ複製して、T_Locationの値を変えても変化しない
+
             bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0,2 });
+            //bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0.3,2 });
 
         }
 
     }
+   
+    if (hp <= 8)
+    {
+        if (bulletCount < 30 && bullets[bulletCount] == nullptr)
+        {
+                       bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{ 0.3,2 });
 
-
+        }
+    }
     
     
 }
@@ -66,10 +77,11 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 
-
+    //敵
     DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
 
 
+    //弾の
     int bulletCount;
     for (bulletCount = 0; bulletCount < 30; bulletCount++)
     {
@@ -79,7 +91,7 @@ void Enemy::Draw()
         }
         bullets[bulletCount]->Draw();
     }
-
+    
 }
 
 
