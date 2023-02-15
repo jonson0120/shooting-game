@@ -6,7 +6,8 @@
 #include "SceneManager.h"
 #include "GameMainScene.h"
 #include"common.h"
-
+#include"Title.h"
+#include"GameOver.h"
 /***********************************************
  * プログラムの開始
  ***********************************************/
@@ -25,7 +26,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     SetFontSize(20);		// 文字サイズを設定
 
-    SceneManager sceneMng((AbstractScene*)new GameMainScene());
+    SceneManager sceneMng((AbstractScene*)new (Title));
 
     // ゲームループ
     while (ProcessMessage() == 0 && sceneMng.Update() != nullptr)

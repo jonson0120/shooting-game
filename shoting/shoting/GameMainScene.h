@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include"ItemBase.h"
+#include"common.h"
 
 class GameMainScene : public AbstractScene
 {
@@ -16,11 +17,11 @@ public:
     {
 
         T_Location location;
-        location.x = 10;
-        location.y = 100;
+        location.x = SCREEN_WINDTH / 2;
+        location.y = 600;
 
-        float radius = 10.f;
-
+        float radius = 22.f;
+        
         player = new Player(location, radius);
 
         enemy = new Enemy * [10];
@@ -28,7 +29,7 @@ public:
         {
             enemy[i] = nullptr;
         }
-        enemy[0] = new Enemy(T_Location{ 300, 0 }, 20);
+        enemy[0] = new Enemy(T_Location{ SCREEN_WINDTH/2, SCREEN_HEIGHT/2 }, 50);
 
         items = new ItemBase*[10];
         for (int i = 0; i < 10; i++) {

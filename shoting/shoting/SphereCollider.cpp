@@ -20,24 +20,21 @@ bool SphereCollider::HitSphere(SphereCollider* s)
     float x = this->location.x - location.x;
     float y = this->location.y - location.y;
 
-   
+
     // 絶対値に変換
     x = fabsf(x);
     y = fabsf(y);
 
-    
     // ベクトルの大きさを取得　√(x*x) + (y*y) 
     float xy = (x * x) + (y * y);
     double vectorSize = sqrt(xy);
 
-  
     // 自分の半径　＋　相手の半径　を取得
     float radius = this->radius + s->GetRadius();
 
     // ベクトルの大きさ　＜＝　合計の半径　の時当たってる
     bool ret = (vectorSize <= radius);
     return ret;
-
 }
 
 float SphereCollider::GetRadius()

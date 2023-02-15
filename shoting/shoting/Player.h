@@ -7,6 +7,9 @@ private:
     int score;  // åªç›ÉXÉRÉA
     int life;   // HP
 
+    int time;
+
+    int PlayerImage;
 public:
     Player(T_Location location, float radius);
 

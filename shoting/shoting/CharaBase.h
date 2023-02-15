@@ -20,4 +20,5 @@ public:
     T_Location GetSpeed();
     void SetSpeed(T_Location speed);
     BulletsBase** GetBullets();
+
 };

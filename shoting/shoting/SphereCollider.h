@@ -14,6 +14,7 @@ class SphereCollider
 private:
     T_Location location;
     float radius;
+ 
 
 public:
     SphereCollider(T_Location location, float radius);

@@ -3,6 +3,9 @@
 #include "KeyManager.h"
 #include "StraightBullets.h"
 #include"HpPotion.h"
+#include"Title.h"
+#include"GameOver.h"
+#include"GameMainScene.h"
 
 T_Location getNewLocation(T_Location newLocation);
 
@@ -11,9 +14,10 @@ Player::Player(T_Location location, float radius)
 {
     score = 0;  // Œ»İƒXƒRƒA
     life = 10;  // HP
-    // image‚Ì‰Šú‰»
-    // speed‚Ì‰Šú‰»
-
+    time;
+  
+    PlayerImage = LoadGraph("images/Alex.png");
+    
     bullets = new BulletsBase * [30];
     for (int i = 0; i < 30; i++)
     {
@@ -60,8 +64,6 @@ void Player::Update()
             bullets[bulletCount] = new StraightBullets(GetLocation(), T_Location{0,-2});
         }
     }
-    
-    
 }
 
 void Player::Draw()
@@ -74,7 +76,14 @@ void Player::Draw()
 #endif 
 
 
+    //DrawGraph(GetLocation().x, GetLocation().y, PlayerImage, TRUE);
+
+    
     DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 0));
+    DrawRotaGraph(GetLocation().x+6, GetLocation().y+3, 0.8f, 0, PlayerImage, TRUE);
+    
+
+    
 
     int bulletCount;
     for (bulletCount = 0; bulletCount < 30; bulletCount++)
@@ -85,6 +94,8 @@ void Player::Draw()
         }
         bullets[bulletCount]->Draw();
     }
+
+  
 }
 void Player::Hit() {
 

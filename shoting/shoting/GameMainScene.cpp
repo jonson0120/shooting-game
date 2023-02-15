@@ -1,6 +1,10 @@
 #include "DxLib.h"
 #include "GameMainScene.h"
 #include"HpPotion.h"
+#include"GameOver.h"
+#include"Enemy.h"
+#include"GameClear.h"
+
 AbstractScene* GameMainScene::Update()
 {
 	player->Update();
@@ -22,7 +26,12 @@ AbstractScene* GameMainScene::Update()
 		}
 		items[i]->Update();
 	}
-
+	
+	if (player->LifeCheck())
+	{
+		return new GameOver();
+	}
+	
 
 
 	BulletsBase** bullets = player->GetBullets();
@@ -53,6 +62,7 @@ AbstractScene* GameMainScene::Update()
 				// エネミーのHPがゼロ以下であれば、エネミーを消す
 				if (enemy[EnemyCount]->HpCheck()) 
 				{
+
 					for (int i = 0; i < 10; i++) 
 					{
 						if (items[i] == nullptr)
@@ -80,6 +90,9 @@ AbstractScene* GameMainScene::Update()
 						enemy[i - 1] = enemy[i];
 						enemy[i] = nullptr;
 					}
+					
+					
+					return new GameClear();
 
 				}
 			}
