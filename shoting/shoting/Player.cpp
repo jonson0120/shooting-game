@@ -173,22 +173,22 @@ T_Location getNewLocation(T_Location newLocation)
 {
     if (KeyManager::OnPressed(KEY_INPUT_W))
     {
-        newLocation.y -= 2;
+        newLocation.y -= 5;
     }
 
     if (KeyManager::OnPressed(KEY_INPUT_A))
     {
-        newLocation.x -= 2;
+        newLocation.x -= 5;
     }
 
     if (KeyManager::OnPressed(KEY_INPUT_S))
     {
-        newLocation.y += 2;
+        newLocation.y += 5;
     }
 
     if (KeyManager::OnPressed(KEY_INPUT_D))
     {
-        newLocation.x += 2;
+        newLocation.x += 5;
     }
     return newLocation;
 }

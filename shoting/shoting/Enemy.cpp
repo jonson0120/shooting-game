@@ -61,7 +61,7 @@ Enemy::Enemy(T_Location location, float radius): SphereCollider(location, radius
      
      EnemyImage = LoadGraph("images/Leonardo.png");
 
-    speed = T_Location{ 6, 2 };
+    speed = T_Location{ 2, 2 };
 
     bullets = new BulletsBase * [30];
     for (int i = 0; i < 30; i++)
