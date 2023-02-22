@@ -61,7 +61,7 @@ Enemy::Enemy(T_Location location, float radius): SphereCollider(location, radius
      
      EnemyImage = LoadGraph("images/Leonardo.png");
 
-    speed = T_Location{ 2, 2 };
+    speed = T_Location{ 6, 2 };
 
     bullets = new BulletsBase * [30];
     for (int i = 0; i < 30; i++)
@@ -159,7 +159,7 @@ void Enemy::Draw()
     DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(255, 0, 255));
 
 
-    DrawRotaGraph(GetLocation().x, GetLocation().y,0.5f,Angle/5,EnemyImage,TRUE );
+    DrawRotaGraph(GetLocation().x, GetLocation().y,0.5f,Angle/2,EnemyImage,TRUE );
 
 
     //弾の
@@ -257,6 +257,7 @@ void Enemy::Move() {
             else
             {
                 newLocation.x -= speed.x;
+
                 //マイナスして目的地より小さくなってないかを確認
                 if (newLocation.x < moveInfo[current].destnation.x)
                 {

@@ -30,6 +30,7 @@ private:
 
 
 public:
+
     Enemy(T_Location location, float radius);
 
 public:
@@ -44,4 +45,13 @@ public:
     void inputCSV();
     void Move();
 };
+
+
+
+//0	640	150	1	0	0
+//0	1200.4	150	2	0	2
+//0	600	400	3	300	1
+//0	80.2	150	4	0	2
+//1	0	0	5	300	1
+//0	300	300	1	0	2
 
