@@ -15,6 +15,9 @@ CircleBullet::CircleBullet(T_Location location, float speed, int degAngle)
     float x = (abs(deg) == 90 || abs(deg) == 270) ? 0 : cos(rad);
     float y = sin(rad);
 
+    int EnemyBulletsImage;
+    EnemyBulletsImage = LoadGraph("images/EnemyBullets.png");
+
     this->speed = T_Location{ (speed * x),(speed * y) };
 }
 
@@ -29,6 +32,7 @@ void CircleBullet::Update()
 void CircleBullet::Draw()
 {
     DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
+    //DrawRotaGraph(GetLocation().x, GetLocation().y, 1, 0, EnemyBulletsImage, TRUE);
 }
 
 bool CircleBullet::isDeath()

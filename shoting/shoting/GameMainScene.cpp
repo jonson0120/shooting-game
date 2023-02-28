@@ -33,8 +33,9 @@ AbstractScene* GameMainScene::Update()
 	}
 	
 
-
 	BulletsBase** bullets = player->GetBullets();
+
+
 	for (int bulletsCount = 0; bulletsCount < 30; bulletsCount++)
 	{
 		if (bullets[bulletsCount] == nullptr)
@@ -90,10 +91,6 @@ AbstractScene* GameMainScene::Update()
 						enemy[i - 1] = enemy[i];
 						enemy[i] = nullptr;
 					}
-					
-					
-					return new GameClear();
-
 				}
 			}
 		}
@@ -147,6 +144,7 @@ AbstractScene* GameMainScene::Update()
 				items[i - 1] = items[i];
 				items[i] = nullptr;
 			}
+			return new GameClear();
 		}
 	}
 
@@ -174,4 +172,5 @@ void GameMainScene::Draw() const
 		}
 		items[i]->Draw();
 	}
+	DrawFormatString(10, 100, GetColor(255, 255, 255), "%d", items);
 }

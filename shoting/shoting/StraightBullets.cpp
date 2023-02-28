@@ -5,7 +5,7 @@
 StraightBullets::StraightBullets(T_Location location, T_Location speed): BulletsBase(location, 5.f, 1, speed)
 {
     image = 0;
-
+    BulletsImage = LoadGraph("images/Bullets.png");
     
 }
 
@@ -22,7 +22,8 @@ void StraightBullets::Update()
 }
 void StraightBullets::Draw()
 {
-    DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));
+    /*DrawCircle(GetLocation().x, GetLocation().y, GetRadius(), GetColor(0, 255, 0));*/
+    DrawRotaGraph(GetLocation().x, GetLocation().y,1,0,BulletsImage,TRUE);
 }
 
 bool StraightBullets::isDeath()

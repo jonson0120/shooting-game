@@ -5,6 +5,7 @@ class StraightBullets : public BulletsBase
 private:
     int image;  // 一旦放置
 
+    int BulletsImage;
 public:
 
     StraightBullets(T_Location location, T_Location speed);  // コンストラクタ

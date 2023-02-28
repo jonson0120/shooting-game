@@ -5,8 +5,6 @@ struct T_Location {
     float x;
     float y;
 
-  
-
 };
 
 class SphereCollider
